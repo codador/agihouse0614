@@ -2,34 +2,24 @@ import React, { useState } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
+import { chatService } from './services/api.service';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleSearch = async (query) => {
+  const handleSearch = async (message) => {
     setIsLoading(true);
     setError(null);
     
     try {
-      const response = await fetch('/api/search', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ query }),
-      });
-      
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
-      }
-      
-      const data = await response.json();
+      // Use the chatService instead of searchService
+      const data = await chatService.chat(message);
       setSearchResults(data.results);
     } catch (err) {
-      setError('Failed to fetch search results. Please try again.');
-      console.error('Search error:', err);
+      setError('Failed to fetch chat responses. Please try again.');
+      console.error('Chat error:', err);
       setSearchResults([]);
     } finally {
       setIsLoading(false);
@@ -39,7 +29,7 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Search Application</h1>
+        <h1>Chat Application</h1>
       </header>
       <main className="app-main">
         <SearchBar onSearch={handleSearch} />

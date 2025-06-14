@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import './SearchBar.css';
 
 const SearchBar = ({ onSearch }) => {
-  const [query, setQuery] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (query.trim()) {
-      onSearch(query);
+    if (message.trim()) {
+      onSearch(message);
     }
   };
 
@@ -17,12 +17,12 @@ const SearchBar = ({ onSearch }) => {
         <input
           type="text"
           className="search-input"
-          placeholder="Enter your search query..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Type your message..."
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
         />
         <button type="submit" className="search-button">
-          Search
+          Send
         </button>
       </form>
     </div>

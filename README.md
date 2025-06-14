@@ -1,46 +1,21 @@
-# Search Application
+# Chat Application
 
-A simple web application with a Python Flask backend and React frontend. The application features a search bar that forwards search queries to a mock API endpoint.
+A simple web application with a React frontend featuring a chat interface that forwards messages to a mock API endpoint through a service layer.
 
 ## Project Structure
 
 ```
 /agihouse0614
-  /backend           # Python Flask server
-    server.py        # Backend API server
-    requirements.txt # Python dependencies
   /frontend          # React frontend application
     /src
       /components    # React components
+      /services      # API service layer
+        api.service.js # Service for handling chat API calls
       App.js         # Main React application
       index.js       # React entry point
 ```
 
 ## Setup Instructions
-
-### Backend Setup
-
-1. Navigate to the backend directory:
-   ```
-   cd backend
-   ```
-
-2. Create a virtual environment (optional but recommended):
-   ```
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. Install dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
-
-4. Run the Flask server:
-   ```
-   python server.py
-   ```
-   The server will run on http://localhost:5000
 
 ### Frontend Setup
 
@@ -62,13 +37,12 @@ A simple web application with a Python Flask backend and React frontend. The app
 
 ## How It Works
 
-1. Enter a search query in the search bar and click "Search"
-2. The React frontend sends the query to the Flask backend
-3. The backend would normally forward this to test.com API (mocked in this implementation)
-4. Search results are displayed on the page
+1. Enter a message in the input field and click "Send"
+2. The React frontend passes the message to the API service layer
+3. The service layer mocks an API call to test.com (simulated in this implementation)
+4. Chat responses are displayed on the page
 
 ## Technologies Used
 
-- Backend: Python, Flask
 - Frontend: JavaScript, React
-- Communication: RESTful API
+- Architecture: Service-oriented frontend with mock API integration
