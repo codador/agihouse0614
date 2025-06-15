@@ -1,6 +1,6 @@
 {
-  "short_name": "Search App",
-  "name": "Search Application",
+  "short_name": "Emotify",
+  "name": "Emotify - Emotion-Based Music Chat",
   "icons": [
     {
       "src": "favicon.ico",
